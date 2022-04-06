@@ -6,7 +6,7 @@ import { baseUrl } from '../baseUrl';
 
 const mapStateToProps = state => {
   return {
-      animals: state.animals, //need to do JSON server for this
+      animals: state.animals, //need to do JSON server for this.. do I need this? Can't I just use the static ANIMALS.js file?
       favorites: state.favorites
   };
 };
