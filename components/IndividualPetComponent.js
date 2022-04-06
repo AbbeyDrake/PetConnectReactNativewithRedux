@@ -2,6 +2,19 @@ import React, { Component } from "react";
 import { Text, View, FlatList, StyleSheet } from "react-native";
 import { Card, Icon, ListItem } from "react-native-elements";
 import { ANIMALS } from "../shared/animals";
+import { connect } from 'react-redux';
+import { baseUrl } from '../baseUrl';
+import { postFavorite } from '../redux/ActionCreators';
+
+const mapStateToProps = state => {
+  return {
+      favorites: state.favorites
+  };
+};
+
+const mapDispatchToProps = {
+  postFavorite: animalId => (postFavorite(animalId))
+};
 
 function RenderIndividualPet(props) {
   const {animal} = props;
@@ -40,16 +53,16 @@ function RenderIndividualPet(props) {
 
 
 class IndividualPetInfo extends Component {
-  constructor(props) {
+  constructor(props){
     super(props);
     this.state = {
-      animals: ANIMALS,
-      favorite: false
-    };
+      animals: ANIMALS
+    }
   }
+  
 
-  markFavorite() {
-    this.setState({favorite: true});
+  markFavorite(animalId) {
+    this.props.postFavorite(animalId);
 }
 
   static NavigationOptions = {
@@ -70,8 +83,8 @@ class IndividualPetInfo extends Component {
   
        <RenderIndividualPet 
             animal={animal}
-            favorite={this.state.favorite}
-            markFavorite={() => this.markFavorite()}
+            favorite={this.props.favorites.includes(animalId)}
+            markFavorite={() => this.markFavorite(animalId)}
             navigate = {navigate}
         />
        
@@ -88,4 +101,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default IndividualPetInfo;
+export default connect(mapStateToProps, mapDispatchToProps)(IndividualPetInfo);

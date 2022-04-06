@@ -35,7 +35,7 @@ class Agencies extends Component {
                     onPress={() => navigate('Schedule')}
                 />
             
-        </Card>
+          </Card>
         </ScrollView>
       );
     };
