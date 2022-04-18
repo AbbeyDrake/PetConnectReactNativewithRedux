@@ -5,11 +5,11 @@ import { favorites } from './favorites';
 
 export const ConfigureStore = () => {
     const store = createStore(
-
-            favorites)
-       
+        combineReducers({
+            favorites
+        }),
         applyMiddleware(thunk, logger)
-   
+    );
 
     return store;
 }

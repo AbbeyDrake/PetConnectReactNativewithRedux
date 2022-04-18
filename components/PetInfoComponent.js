@@ -51,7 +51,7 @@ class PetInfo extends Component {
             key={item}
           >
           <ListItem
-          title={`${item.name} -- Click here for more info!`}
+          title={`${item.name} - Click here for more info!`}
           onPress={() => navigate("IndividualPetInfo", { animalId: item.id })}
           />
           </Card>
