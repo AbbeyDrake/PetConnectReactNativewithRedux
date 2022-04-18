@@ -50,7 +50,7 @@ class Home extends Component {
 
               fontWeight: "bold",
             }}>
-            clever tagline
+            Your New Best Friend
           </Text>
         </View>
 
